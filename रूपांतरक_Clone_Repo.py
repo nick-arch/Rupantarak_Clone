@@ -159,3 +159,16 @@ html_content_1 = '''
 '''
 
 display(HTML(html_content_1))
+
+# स्थनुप्रभॊ विश्वभावः स्वयम्भू शम्भूवामनः |
+total_duration = 700
+# स भूमिं विश्वतो वर्त्त्या आत्मानं च जगत् स्थितं |
+layout = widgets.Layout(width='90%', margin='0 auto 0 auto')
+progress_bar = widgets.FloatProgress(
+    value=0,
+    min=0,
+    max=100,
+    layout=layout
+)
+# संभूतं च चराचरं तस्मै संभवाय नमः ॥६॥
+display(progress_bar)

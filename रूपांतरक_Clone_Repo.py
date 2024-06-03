@@ -113,6 +113,3 @@ layout = widgets.Layout(width='90%', margin='0 auto 0 auto')
 progress_bar = widgets.FloatProgress(value=0, min=0, max=100, layout=layout)
 display(progress_bar)
 
-import requests
-import re
-%run /content/Rupantarak/Rupantarak_Pro/Rupantarak_I/रूपांतरक_GPU.py

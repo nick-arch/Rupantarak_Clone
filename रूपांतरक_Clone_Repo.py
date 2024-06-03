@@ -107,3 +107,4 @@ html_content_1 = '''
 
 display(HTML(html_content_1))
 
+%run /content/Rupantarak/Rupantarak_Pro/Rupantarak_I/रूपांतरक_GPU.py

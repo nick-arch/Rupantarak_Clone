@@ -6,6 +6,7 @@ import subprocess
 import time
 import threading
 import os
+from ipywidgets import widgets
 from IPython.display import display, HTML
 import ipywidgets as widgets
 # नमस्ते रुद्रमन्यव उतोत इषवेनमः |

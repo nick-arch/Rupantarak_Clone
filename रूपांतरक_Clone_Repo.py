@@ -107,9 +107,3 @@ html_content_1 = '''
 
 display(HTML(html_content_1))
 
-# Progress bar
-total_duration = 700
-layout = widgets.Layout(width='90%', margin='0 auto 0 auto')
-progress_bar = widgets.FloatProgress(value=0, min=0, max=100, layout=layout)
-display(progress_bar)
-

@@ -25,7 +25,7 @@ gradient_button_css = """
     background-image: linear-gradient(to right, #FA8072, #D8D8B4);
 }
 .custom-accordion {
-    width: 380px !important;
+    width: 350px !important;
     margin: 10px auto !important;
     border-radius: 5px !important;
     background: linear-gradient(to right, #FA8072, #F5F5DC) !important;

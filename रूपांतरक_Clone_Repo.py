@@ -171,4 +171,3 @@ def start_processes():
 # यातुधान्वा गर्भिन्यॊऽधि कैतवानॊ अजायतः |
 start_processes()
 # अशनाय पिपील्यानॊ अश्मनाभिर्व्याधिषू प्रभुः ॥७॥
-!pip freeze > Rupantarak_requirements.txt

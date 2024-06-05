@@ -269,7 +269,7 @@ def display_cuda_available_message():
         setTimeout(function() {
             var popup = document.getElementById('available-popup');
             popup.style.display = 'none';
-        }, 2000);
+        }, 12000);
     </script>
     """
     display(HTML(available_html))

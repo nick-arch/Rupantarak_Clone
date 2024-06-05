@@ -151,6 +151,7 @@ def run_installation():
 
         commands = [
             "apt install nvidia-cuda-toolkit --yes",
+            "pip install gdown",
         ]
         log_output = widgets.Output(layout={'border': '0px solid black', 'width': '100%', 'height': '300px', 'overflow_y': 'scroll'})
         accordion = widgets.Accordion(children=[log_output])

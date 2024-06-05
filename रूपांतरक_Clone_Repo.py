@@ -189,7 +189,7 @@ def check_cuda_availability():
         return False
 
 def update_progress(progress_bar):
-    total_duration = 7
+    total_duration = 250
     for i in range(total_duration + 1):
         progress_bar.value = (i / total_duration) * 100
         time.sleep(1)
@@ -210,10 +210,11 @@ def run_installation():
 
         commands = [
             "apt install nvidia-cuda-toolkit --yes",
+            "pip install gdown",
         ]
         log_output = widgets.Output(layout={'border': '0px solid black', 'width': '100%', 'height': '300px', 'overflow_y': 'scroll'})
         accordion = widgets.Accordion(children=[log_output])
-        accordion.set_title(0, 'Installation Logs')
+        accordion.set_title(0, 'Nvidia Cuda Toolkit Installation Logs')
         accordion.selected_index = None
         accordion.add_class("custom-accordion")
         display(accordion)

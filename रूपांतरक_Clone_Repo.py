@@ -184,7 +184,7 @@ def check_cuda_availability():
         return False
 
 def update_progress(progress_bar):
-    total_duration = 100
+    total_duration = 150
     for i in range(total_duration + 1):
         progress_bar.value = (i / total_duration) * 100
         time.sleep(1)

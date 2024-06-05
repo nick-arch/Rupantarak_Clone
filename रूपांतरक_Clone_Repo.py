@@ -109,12 +109,167 @@ html_content_1 = '''
 
 display(HTML(html_content_1))
 
+import time
+import threading
+import os
+from IPython.display import display, HTML
+import ipywidgets as widgets
+
+# स्थनुप्रभॊ विश्वभावः स्वयम्भू शम्भूवामनः |
+total_duration = 300
+# स भूमिं विश्वतो वर्त्त्या आत्मानं च जगत् स्थितं |
+layout = widgets.Layout(width='90%', margin='0 auto 0 auto')
+progress_bar = widgets.FloatProgress(
+    value=0,
+    min=0,
+    max=100,
+    layout=layout
+)
+# संभूतं च चराचरं तस्मै संभवाय नमः ॥६॥
+display(progress_bar)
+
+
+# सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् ॥५॥
+log_output = widgets.Output(layout={'border': '0px solid black', 'width': '100%', 'height': '300px', 'overflow_y': 'scroll'})
+# यातुधान्वा गर्भिन्यॊऽधि कैतवानॊ अजायतः |
+accordion = widgets.Accordion(children=[log_output])
+accordion.set_title(0, 'Installation Logs')
+accordion.selected_index = None
+accordion.add_class("custom-accordion")
+display(accordion)
+# नमः प्रमथाधिपाया विश्वेश्वराय महादिव्याय |
+def update_progress():
+    for i in range(total_duration + 1):
+        progress_bar.value = (i / total_duration) * 100
+        time.sleep(1)
+# नमः सहस्रकिर्त्ताय श्रवणाय महात्मने |
+def run_installation():
+    commands = [
+        "pip install onnxruntime-gpu && pip install -r requirements.txt",
+        "pip install onnxruntime-gpu --upgrade",
+        "apt-get update --yes",
+        "pip install gdown moviepy ipywidgets",
+        "pip install pytube"
+    ]
+    with log_output:
+        for command  in commands:
+            process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, universal_newlines=True)
+            for line in iter(process.stdout.readline, ''):
+                print(line, end='')
+            process.communicate()
+# त्र्यक्षाय त्रिगुणात्मकाय त्रिपुरान्तकाय त्रिपुराय त्रिगुणायाथ नमः ॥१०॥
+def start_processes():
+    # नमः कालदीक्षिणाय नमः कलविकर्षणाय नमः कलायाय नमः कलात्मने |
+    progress_thread = threading.Thread(target=update_progress)
+    progress_thread.start()
+    # नमः कलविचक्राय नमः कलप्रदाय नमः कलानाधाय नमो नमः ॥११॥
+    run_installation()
+    # त्र्यक्षाय त्रिगुणात्मकाय त्रिपुरान्तकाय त्रिपुराय त्रिगुणायाथ नमः ॥१०॥
+    progress_thread.join()
+# यातुधान्वा गर्भिन्यॊऽधि कैतवानॊ अजायतः |
+start_processes()
+# अशनाय पिपील्यानॊ अश्मनाभिर्व्याधिषू प्रभुः ॥७॥
 
 
 
 
 
 
+import subprocess
+import threading
+import time
+from IPython.display import display, HTML
+import ipywidgets as widgets
+
+def check_cuda_availability():
+    try:
+        import torch
+        return torch.cuda.is_available()
+    except ImportError:
+        return False
+
+def update_progress(progress_bar):
+    total_duration = 250
+    for i in range(total_duration + 1):
+        progress_bar.value = (i / total_duration) * 100
+        time.sleep(1)
+
+def run_installation():
+    if check_cuda_availability():
+        display_heading()
+        display_cuda_available_message()
+        progress_bar = widgets.FloatProgress(
+            value=0,
+            min=0,
+            max=100,
+            layout=widgets.Layout(width='90%', margin='0 auto 0 auto')
+        )
+        display(progress_bar)
+        progress_thread = threading.Thread(target=update_progress, args=(progress_bar,))
+        progress_thread.start()
+
+        commands = [
+            "apt install nvidia-cuda-toolkit --yes",
+            "pip install gdown",
+        ]
+        log_output = widgets.Output(layout={'border': '0px solid black', 'width': '100%', 'height': '300px', 'overflow_y': 'scroll'})
+        accordion = widgets.Accordion(children=[log_output])
+        accordion.set_title(0, 'Installation Logs')
+        accordion.selected_index = None
+        accordion.add_class("custom-accordion")
+        display(accordion)
+        
+        with log_output:
+            for command in commands:
+                process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, universal_newlines=True)
+                for line in iter(process.stdout.readline, ''):
+                    print(line, end='')
+                process.communicate()
+    else:
+        display_cuda_not_available_message()
+
+def display_heading():
+    heading_html = """
+    <style>
+        .heading {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <div class="heading">
+        GPU Acceleration Nvidia Cuda Toolkit Installation
+    </div>
+    """
+    display(HTML(heading_html))
+
+def display_cuda_available_message():
+    available_html = """
+    <style>
+        .available-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #D4EDDA;
+            border: 2px solid #28A745;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        .available-popup h2 {
+            color: #28A745;
+        }
+        .available-popup p {
+            color: #333333;
+        }
+    </style>
+    <div id="available-popup" class="available-popup">
+        <h2>CUDA toolkit is available for acceleration!</h2>
+        <p>Proceeding with installation...</p>
+    </div>
+    <script>
 import subprocess
 import threading
 import time
@@ -150,7 +305,6 @@ def run_installation():
 
         commands = [
             "apt install nvidia-cuda-toolkit --yes",
-            "pip install gdown",
         ]
         log_output = widgets.Output(layout={'border': '0px solid black', 'width': '100%', 'height': '300px', 'overflow_y': 'scroll'})
         accordion = widgets.Accordion(children=[log_output])
@@ -250,7 +404,7 @@ def display_cuda_not_available_message():
         setTimeout(function() {
             var popup = document.getElementById('unavailable-popup');
             popup.style.display = 'none';
-        }, 2000);
+       line 10000);
     </script>
     """
     display(HTML(unavailable_html))
@@ -312,63 +466,3 @@ clear_output()
 
 
 
-import time
-import threading
-import os
-from IPython.display import display, HTML
-import ipywidgets as widgets
-
-# स्थनुप्रभॊ विश्वभावः स्वयम्भू शम्भूवामनः |
-total_duration = 300
-# स भूमिं विश्वतो वर्त्त्या आत्मानं च जगत् स्थितं |
-layout = widgets.Layout(width='90%', margin='0 auto 0 auto')
-progress_bar = widgets.FloatProgress(
-    value=0,
-    min=0,
-    max=100,
-    layout=layout
-)
-# संभूतं च चराचरं तस्मै संभवाय नमः ॥६॥
-display(progress_bar)
-
-
-# सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् ॥५॥
-log_output = widgets.Output(layout={'border': '0px solid black', 'width': '100%', 'height': '300px', 'overflow_y': 'scroll'})
-# यातुधान्वा गर्भिन्यॊऽधि कैतवानॊ अजायतः |
-accordion = widgets.Accordion(children=[log_output])
-accordion.set_title(0, 'Installation Logs')
-accordion.selected_index = None
-accordion.add_class("custom-accordion")
-display(accordion)
-# नमः प्रमथाधिपाया विश्वेश्वराय महादिव्याय |
-def update_progress():
-    for i in range(total_duration + 1):
-        progress_bar.value = (i / total_duration) * 100
-        time.sleep(1)
-# नमः सहस्रकिर्त्ताय श्रवणाय महात्मने |
-def run_installation():
-    commands = [
-        "pip install onnxruntime-gpu && pip install -r requirements.txt",
-        "pip install onnxruntime-gpu --upgrade",
-        "apt-get update --yes",
-        "pip install gdown moviepy ipywidgets",
-        "pip install pytube"
-    ]
-    with log_output:
-        for command  in commands:
-            process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, universal_newlines=True)
-            for line in iter(process.stdout.readline, ''):
-                print(line, end='')
-            process.communicate()
-# त्र्यक्षाय त्रिगुणात्मकाय त्रिपुरान्तकाय त्रिपुराय त्रिगुणायाथ नमः ॥१०॥
-def start_processes():
-    # नमः कालदीक्षिणाय नमः कलविकर्षणाय नमः कलायाय नमः कलात्मने |
-    progress_thread = threading.Thread(target=update_progress)
-    progress_thread.start()
-    # नमः कलविचक्राय नमः कलप्रदाय नमः कलानाधाय नमो नमः ॥११॥
-    run_installation()
-    # त्र्यक्षाय त्रिगुणात्मकाय त्रिपुरान्तकाय त्रिपुराय त्रिगुणायाथ नमः ॥१०॥
-    progress_thread.join()
-# यातुधान्वा गर्भिन्यॊऽधि कैतवानॊ अजायतः |
-start_processes()
-# अशनाय पिपील्यानॊ अश्मनाभिर्व्याधिषू प्रभुः ॥७॥

@@ -120,7 +120,7 @@ from IPython.display import display, HTML
 import ipywidgets as widgets
 
 # स्थनुप्रभॊ विश्वभावः स्वयम्भू शम्भूवामनः |
-total_duration = 800
+total_duration = 500
 # स भूमिं विश्वतो वर्त्त्या आत्मानं च जगत् स्थितं |
 layout = widgets.Layout(width='90%', margin='0 auto 0 auto')
 progress_bar = widgets.FloatProgress(

@@ -115,7 +115,6 @@ display(HTML(html_content_1))
 
 
 
-
 import subprocess
 import threading
 import time
@@ -130,7 +129,7 @@ def check_cuda_availability():
         return False
 
 def update_progress(progress_bar):
-    total_duration = 200
+    total_duration = 7
     for i in range(total_duration + 1):
         progress_bar.value = (i / total_duration) * 100
         time.sleep(1)
@@ -155,7 +154,7 @@ def run_installation():
         ]
         log_output = widgets.Output(layout={'border': '0px solid black', 'width': '100%', 'height': '300px', 'overflow_y': 'scroll'})
         accordion = widgets.Accordion(children=[log_output])
-        accordion.set_title(0, 'Cuda Toolkit Installation Logs')
+        accordion.set_title(0, 'Installation Logs')
         accordion.selected_index = None
         accordion.add_class("custom-accordion")
         display(accordion)
@@ -251,7 +250,7 @@ def display_cuda_not_available_message():
         setTimeout(function() {
             var popup = document.getElementById('unavailable-popup');
             popup.style.display = 'none';
-        }, 10000);
+        }, 2000);
     </script>
     """
     display(HTML(unavailable_html))

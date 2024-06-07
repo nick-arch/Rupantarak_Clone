@@ -9,7 +9,58 @@ import threading
 import os
 from IPython.display import display, HTML
 import ipywidgets as widgets
+from IPython.display import display, HTML
 
+def display_installation_begin_popup():
+    begin_popup_html = """
+    <style>
+        .begin-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #F0E68C;
+            border: 2px solid #32CD32;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            z-index: 1000;
+        }
+        .begin-popup h2 {
+            color: #32CD32;
+        }
+        .begin-popup p {
+            color: #333333;
+        }
+        .begin-popup button {
+            background-color: #32CD32;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <div class="begin-popup" id="begin-popup">
+        <h2>रूपांतरक ~ Rupantarak Installation Begin</h2>
+        <p>Installation process has started & This will take a while...</p>
+        <button onclick="close_begin_popup()">Close</button>
+    </div>
+    <script>
+        function close_begin_popup() {
+            document.getElementById('begin-popup').style.display = 'none';
+        }
+        setTimeout(close_begin_popup, 10000); // Hide the popup after 10 seconds
+    </script>
+    """
+    display(HTML(begin_popup_html))
+
+# At the beginning of your notebook, before starting installations
+display_installation_begin_popup()
 # नमस्ते रुद्रमन्यव उतोत इषवेनमः |
 gradient_button_css = """
 <style>
@@ -312,3 +363,56 @@ def display_cuda_not_available_message():
 
 run_installation()
 
+
+from IPython.display import display, HTML
+
+def display_rupantarak_confirmation():
+    confirmation_html = """
+    <style>
+        .confirmation-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #F5F5DC;
+            border: 2px solid #FA8072;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            z-index: 1000;
+        }
+        .confirmation-popup h2 {
+            color: #ff0066;
+        }
+        .confirmation-popup p {
+            color: #333333;
+        }
+        .confirmation-popup button {
+            background-color: #FA8072;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <div class="confirmation-popup" id="popup">
+        <h2>Rupantarak Installation Complete Successfully</h2>
+        <p>Click the button below to close this message, or it will disappear in 10 seconds.</p>
+        <button onclick="close_popup()">Close</button>
+    </div>
+    <script>
+        function close_popup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+        setTimeout(close_popup, 10000); // Hide the popup after 10 seconds
+    </script>
+    """
+    display(HTML(confirmation_html))
+
+# At the end of your notebook, after all installations and configurations
+display_rupantarak_confirmation()

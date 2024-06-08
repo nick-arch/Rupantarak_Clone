@@ -107,17 +107,15 @@ def generate_main_repo_url():
     encoded_repo_url = base64.b64encode(main_repo_url.encode()).decode()
     return encoded_repo_url
 
-# Function to display the gradient text logo
 # Function to display the customized gradient text logo
 def display_logo():
     logo_html = """
-    <div style='text-align: center;'><h1 style='font-family: Andika, sans-serif; font-size: 50px; background: -webkit-linear-gradient(left, pink, pink); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'><span style='color: pink;'>र</span><span style='color: pink;'>ू</span><span style='color: pink;'>प</span><span style='color: pink;'>ा</span><span style='color: pink;'>ं</span><span style='color: pink;'>त</span><span style='color: pink;'>र</span><span style='color: pink;'>क</span> <span style='color: pink; font-size: 22px;'>~ Rupantarak</span><br><span style='font-size: 18px; color: #ffffff;'>By Vishal Sharma</span><br><span style='color: #FA8072; font-size: 22px;'>ॐ नमः पार्वती पतये, हर-हर महादेव:</span></h1></div>
+    <div style='text-align: center;'><h1 style='font-family: Andika, sans-serif; font-size: 50px; background: -webkit-linear-gradient(left, pink, pink); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'><span style='color: pink;'>र</span><span style='color: pink;'>ू</span><span style='color: pink;'>प</span><span style='color: pink;'>ा</span><span style='color: pink;'>ं</span><span style='color: pink;'>त</span><span style='color: pink;'>र</span><span style='color: pink;'>क</span> <span style='color: pink; font-size: 22px;'>~ Ꮢᥙραɳ𝜏αɾαƙ</span><br><span style='font-size: 18px; color: #ffffff;'>By Vishal Sharma</span><br><span style='color: #FA8072; font-size: 22px;'>ॐ नमः पार्वती पतये, हर-हर महादेव:</span></h1></div>
     """
     display(HTML(logo_html))
 
 # Displaying the customized gradient text logo
 display_logo()
-
 # Progress bar
 progress = widgets.IntProgress(value=0, min=0, max=3, step=1, description='Loading:')
 display(progress)

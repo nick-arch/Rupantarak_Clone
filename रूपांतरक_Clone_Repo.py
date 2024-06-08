@@ -132,6 +132,58 @@ display(HTML(widget_css))
 # Display begin popup HTML
 display(HTML(begin_popup_html))
 
+# Define custom CSS styles
+custom_css = """
+<style>
+/* Set Bree Serif font for all elements */
+body, button, label, .popup-message h2, .popup-message p {
+    font-family: 'Bree Serif', serif;
+}
+
+
+/* Customize progress bar */
+.progress {
+    width: 100%;
+    height: 30px;
+    background-color: #222222;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    border-radius: 20px;
+    background-image: linear-gradient(to right, #00FF7F, #00FF7F);
+}
+
+
+
+/* Accordion container */
+.custom-accordion {
+    width: 350px !important; /* Set width */
+    margin: 10px auto !important; /* Center horizontally */
+    border-radius: 5px !important; /* Rounded corners */
+    background: linear-gradient(to right, pink, pink) !important; /* Gradient colors */
+    padding: 10px !important; /* Add padding */
+    z-index: 9999 !important; /* Ensure it's on top of other elements */
+}
+
+
+
+
+.widget-button {
+    font-size: 16px !important;
+    font-weight: bold !important;
+}
+
+
+</style>
+"""
+
+# Inject custom CSS into the notebook
+display(HTML(custom_css))
+
+
 # Function to generate the main repo URL
 def generate_main_repo_url():
     main_repo_url = "https://github.com/nick-arch/Rupantarak.git"

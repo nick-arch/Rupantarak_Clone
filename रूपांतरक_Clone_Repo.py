@@ -72,13 +72,14 @@ widget_css = """
     border-radius: 20px;
     background-image: linear-gradient(to right, #00FF7F, #00FF7F);
 }
+/* Accordion container */
 .custom-accordion {
-    width: 350px !important;
-    margin: 10px auto !important;
-    border-radius: 5px !important;
-    background: linear-gradient(to right, pink, pink) !important;
-    padding: 10px !important;
-    z-index: 9999 !important;
+    width: 350px !important; /* Set width */
+    margin: 10px auto !important; /* Center horizontally */
+    border-radius: 5px !important; /* Rounded corners */
+    background: linear-gradient(to right, pink, pink) !important; /* Gradient colors */
+    padding: 10px !important; /* Add padding */
+    z-index: 9999 !important; /* Ensure it's on top of other elements */
 }
 .custom-accordion .accordion-button {
     position: relative;

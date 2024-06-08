@@ -11,59 +11,54 @@ from IPython.display import display, HTML
 import ipywidgets as widgets
 from IPython.display import display, HTML
 
-def display_installation_begin_popup():
-    begin_popup_html = """
-    <style>
-        .begin-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #F0E68C;
-            border: 2px solid #32CD32;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            z-index: 1000;
-        }
-        .begin-popup h2 {
-            color: #32CD32;
-        }
-        .begin-popup p {
-            color: #333333;
-        }
-        .begin-popup button {
-            background-color: #32CD32;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
-    <div class="begin-popup" id="begin-popup">
-        <h2>रूपांतरक ~ Rupantarak Installation Begin</h2>
-        <p>Installation process has started & This will take a while...</p>
-        <button onclick="close_begin_popup()">Close</button>
-    </div>
-    <script>
-        function close_begin_popup() {
-            document.getElementById('begin-popup').style.display = 'none';
-        }
-        setTimeout(close_begin_popup, 10000); // Hide the popup after 10 seconds
-    </script>
-    """
-    display(HTML(begin_popup_html))
+from IPython.display import HTML
 
-# At the beginning of your notebook, before starting installations
-display_installation_begin_popup()
-# नमस्ते रुद्रमन्यव उतोत इषवेनमः |
-gradient_button_css = """
+# CSS import for Bree Serif font
+css_import = """
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+</style>
+"""
+
+# CSS styles for widgets
+widget_css = """
+<style>
+.bree-serif-regular {
+  font-family: "Bree Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.begin-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #F0E68C;
+    border: 2px solid #32CD32;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    z-index: 1000;
+}
+.begin-popup h2 {
+    color: #32CD32;
+}
+.begin-popup p {
+    color: #333333;
+}
+.begin-popup button {
+    background-color: #32CD32;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 .progress {
     width: 100%;
@@ -98,8 +93,30 @@ gradient_button_css = """
 }
 </style>
 """
-# नमः प्रत्नय तॊषया गिरिश विप्रेषया ॥१॥
-display(HTML(gradient_button_css))
+
+# HTML content for begin popup
+begin_popup_html = """
+<div class="begin-popup" id="begin-popup">
+    <h2 class="bree-serif-regular">रूपांतरक ~ Rupantarak Installation Begin</h2>
+    <p class="bree-serif-regular">Installation process has started & This will take a while...</p>
+    <button onclick="close_begin_popup()" class="bree-serif-regular">Close</button>
+</div>
+<script>
+    function close_begin_popup() {
+        document.getElementById('begin-popup').style.display = 'none';
+    }
+    setTimeout(close_begin_popup, 10000); // Hide the popup after 10 seconds
+</script>
+"""
+
+# Display CSS import
+display(HTML(css_import))
+
+# Display CSS styles for widgets
+display(HTML(widget_css))
+
+# Display begin popup HTML
+display(HTML(begin_popup_html))
 
 # Function to generate the main repo URL
 def generate_main_repo_url():
@@ -107,11 +124,20 @@ def generate_main_repo_url():
     encoded_repo_url = base64.b64encode(main_repo_url.encode()).decode()
     return encoded_repo_url
 
-# Function to display the customized gradient text logo
-# Function to display the customized text logo
+from IPython.display import HTML
+
 def display_logo():
     logo_html = """
-    <div style='text-align: center;'><h1 style='font-family: Andika, sans-serif;'><span style='color: pink; font-size: 44px;'>रूपांतरक <span style='color: black;'>~ </span></span><span style='color: white; font-size: 25px;'>Ꮢᥙραɳ𝜏αɾαƙ</span></br><br><span style='color: #00FF7F; font-size: 24px;'>By ~ Vishal Sharma</span></h1></div>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yatra+One&display=swap');
+
+    .yatra-one-regular {
+        font-family: 'Yatra One', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+    </style>
+    <div style='text-align: center;'><h1 style='font-family: Andika, sans-serif;'><span class="yatra-one-regular" style='color: pink; font-size: 44px;'>रूपांतरक <span style='color: black;'>~ </span></span><span style='color: white; font-size: 25px;'>Ꮢᥙραɳ𝜏αɾαƙ</span></br><br><span style='color: #00FF7F; font-size: 34px;'>вч νιѕнαℓ ѕнαямα</span></h1></div>
     """
     display(HTML(logo_html))
 
@@ -132,19 +158,39 @@ progress.value += 1
 os.chdir('/content/Rupantarak')
 progress.value += 1
 
-# Note 1
+
+from IPython.display import HTML
+
 html_content_1 = '''
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Yatra+One&display=swap');
+
+.bree-serif-regular {
+  font-family: "Bree Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.yatra-one-regular {
+  font-family: "Yatra One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+</style>
+
 <div style="display: flex; justify-content: center; margin-top: 10px; margin-bottom: 10px;">
   <div style="width: 350px; margin: 10px 0;">
     <details id="details1">
-      <summary id="summary1" style="border: none; border-radius: 8px; background: linear-gradient(to right, pink, pink); color: black; padding: 3px; text-align: center; cursor: pointer; list-style: none; font-weight: bold; margin-bottom: 10px;">
-        <span id="arrow1">➼</span> <b>Must-Knows</b>
+      <summary id="summary1" style="border: none; border-radius: 8px; background: linear-gradient(to right, pink, pink); color: black; padding: 3px; text-align: center; cursor: pointer; list-style: none; font-weight: bold; margin-bottom: 10px;" class="bree-serif-regular">
+        <span id="arrow1" class="bree-serif-regular">➼</span> <b class="bree-serif-regular">Must-Knows</b>
       </summary>
-      <div style="border-radius: 8px; background-color: #333333; padding: 7px; color: white;">
-        The रूपांतरक ~ Ꮢᥙραɳ𝜏αɾαƙ installation process typically takes up to 8 minutes without GPU dependencies. However, if the NVIDIA CUDA Toolkit is available in your environment, it may extend the installation time to up to 12 minutes.
+      <div style="border-radius: 8px; background-color: #222222; padding: 7px; color: white;" class="yatra-one-regular">
+        The <span class="yatra-one-regular">रूपांतरक</span> ~ Ꮢᥙραɳ𝜏αɾαƙ installation process typically takes up to 8 minutes without GPU dependencies. However, if the NVIDIA CUDA Toolkit is available in your environment, it may extend the installation time to up to 12 minutes.
+      </div>
     </details>
   </div>
 </div>
+
 <script>
   var details1 = document.getElementById('details1');
   var arrow1 = document.getElementById('arrow1');

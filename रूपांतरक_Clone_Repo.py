@@ -80,16 +80,29 @@ widget_css = """
     padding: 10px !important;
     z-index: 9999 !important;
 }
-.widget-container {
-    border: none !important;
-    background-color: #383838 !important; /* Background color changed */
-    box-shadow: none !important;
-    padding: 10px; /* Added padding */
-    border-radius: 5px; /* Added border-radius */
+.custom-accordion .accordion-button {
+    position: relative;
+    overflow: hidden;
 }
-.custom-accordion .custom-content {
-    background-color: #F5F5DC !important;
-    padding: 5px;
+.custom-accordion .accordion-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.custom-accordion .accordion-button:hover::before {
+    opacity: 1;
+}
+.custom-accordion .accordion-text {
+    position: relative;
+    z-index: 2;
+    color: #000000;
 }
 </style>
 """

@@ -81,7 +81,7 @@ gradient_button_css = """
     width: 350px !important;
     margin: 10px auto !important;
     border-radius: 5px !important;
-    background: linear-gradient(to right, #444444, #555555) !important;
+    background: linear-gradient(to right, pink, pink) !important;
     padding: 10px !important;
     z-index: 9999 !important;
 }
@@ -110,7 +110,7 @@ def generate_main_repo_url():
 # Function to display the gradient text logo
 def display_logo():
     logo_html = """
-    <div style='text-align: center;'><h1 style='font-family: Andika, sans-serif; font-size: 50px; background: -webkit-linear-gradient(left, #444444, #555555); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'><span style='color: #ff0066;'>र</span><span style='color: #ff6f00;'>ू</span><span style='color: #ffjd00;'>प</span><span style='color: #4caf50;'>ा</span><span style='color: #2196f3;'>ं</span><span style='color: #9c27b0;'>त</span><span style='color: #ff5722;'>र</span><span style='color: #FFC0CB;'>क</span> <span style='color: #2196f3; font-size: 22px;'>~ Rupantarak</span><br><span style='font-size: 18px;'>By Vishal Sharma</span><br><span style='color: #ff0066; font-size: 22px;'>ॐ नमः पार्वती पतये, हर-हर महादेव:</span></h1></div>
+    <div style='text-align: center;'><h1 style='font-family: Andika, sans-serif; font-size: 50px; background: -webkit-linear-gradient(left, pink, pink); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'><span style='color: #ff0066;'>र</span><span style='color: #ff6f00;'>ू</span><span style='color: #ffjd00;'>प</span><span style='color: #4caf50;'>ा</span><span style='color: #2196f3;'>ं</span><span style='color: #9c27b0;'>त</span><span style='color: #ff5722;'>र</span><span style='color: #FFC0CB;'>क</span> <span style='color: #2196f3; font-size: 22px;'>~ Rupantarak</span><br><span style='font-size: 18px;'>By Vishal Sharma</span><br><span style='color: #ff0066; font-size: 22px;'>ॐ नमः पार्वती पतये, हर-हर महादेव:</span></h1></div>
     """
     display(HTML(logo_html))
 
@@ -137,7 +137,7 @@ html_content_1 = '''
 <div style="display: flex; justify-content: center; margin-top: 10px; margin-bottom: 10px;">
   <div style="width: 350px; margin: 10px 0;">
     <details id="details1">
-      <summary id="summary1" style="border: none; border-radius: 8px; background: linear-gradient(to right, #444444, #555555); color: black; padding: 3px; text-align: center; cursor: pointer; list-style: none; font-weight: bold; margin-bottom: 10px;">
+      <summary id="summary1" style="border: none; border-radius: 8px; background: linear-gradient(to right, pink, pink); color: black; padding: 3px; text-align: center; cursor: pointer; list-style: none; font-weight: bold; margin-bottom: 10px;">
         <span id="arrow1">➼</span> <b>Must-Knows</b>
       </summary>
       <div style="border-radius: 8px; background-color: #333333; padding: 7px; color: white;">
